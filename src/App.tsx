@@ -28,6 +28,9 @@ import {
 } from 'lucide-react'
 import ProductsManager from "./pages/ProductsManager.tsx";
 import POSWizard from './pages/POSWizard';
+import ActiveLoansManager from "./pages/ActiveLoansManager.tsx";
+import CollectionCalendar from "./pages/CollectionCalendar.tsx";
+import OverdueManager from "./pages/OverdueManager.tsx";
 
 function App() {
     return (
@@ -153,11 +156,7 @@ function App() {
                         <ProtectedRoute>
                             <PersonaProtectedRoute>
                                 <Layout>
-                                    <PlaceholderPage
-                                        title="Active Loans"
-                                        description="Overview of all active installment loans."
-                                        icon={CheckCircle2}
-                                    />
+                                    <ActiveLoansManager/>
                                 </Layout>
                             </PersonaProtectedRoute>
                         </ProtectedRoute>
@@ -167,11 +166,7 @@ function App() {
                         <ProtectedRoute>
                             <PersonaProtectedRoute>
                                 <Layout>
-                                    <PlaceholderPage
-                                        title="Due Calendar"
-                                        description="Calendar view for upcoming due payments."
-                                        icon={CalendarClock}
-                                    />
+                                    <CollectionCalendar/>
                                 </Layout>
                             </PersonaProtectedRoute>
                         </ProtectedRoute>
@@ -181,11 +176,7 @@ function App() {
                         <ProtectedRoute>
                             <PersonaProtectedRoute>
                                 <Layout>
-                                    <PlaceholderPage
-                                        title="Overdue"
-                                        description="List of overdue payments and accounts."
-                                        icon={AlertTriangle}
-                                    />
+                                    <OverdueManager/>
                                 </Layout>
                             </PersonaProtectedRoute>
                         </ProtectedRoute>
