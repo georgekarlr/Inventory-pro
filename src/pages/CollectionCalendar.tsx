@@ -67,7 +67,7 @@ const CollectionCalendar: React.FC = () => {
     }, [items]);
 
     // --- Helpers ---
-    const formatCurrency = (val: number) => new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(val);
+    const formatCurrency = (val: number) => new Intl.NumberFormat('en-US', { style: 'currency', currency: 'PHP' }).format(val);
 
     const getStatusStyles = (days: number) => {
         if (days < 0) return 'bg-red-50 border-red-200 text-red-700'; // Overdue

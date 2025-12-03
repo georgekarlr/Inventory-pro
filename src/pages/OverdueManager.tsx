@@ -47,7 +47,7 @@ const OverdueManager: React.FC = () => {
 
     // Helpers
     const formatCurrency = (amount: number) =>
-        new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(amount);
+        new Intl.NumberFormat('en-US', { style: 'currency', currency: 'PHP' }).format(amount);
 
     const getSeverityStyles = (days: number) => {
         if (days > 30) return 'bg-red-100 text-red-800 border-red-200'; // Severe

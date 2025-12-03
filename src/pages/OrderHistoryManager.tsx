@@ -57,7 +57,7 @@ const OrderHistoryManager: React.FC = () => {
 
     // --- Helpers ---
     const formatCurrency = (val: number) =>
-        new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(val);
+        new Intl.NumberFormat('en-US', { style: 'currency', currency: 'PHP' }).format(val);
 
     const formatSaleType = (type: string) =>
         type.replace(/_/g, ' ').replace(/\b\w/g, c => c.toUpperCase());

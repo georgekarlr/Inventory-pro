@@ -61,7 +61,7 @@ const PaymentPlanBuilder: React.FC<PaymentPlanBuilderProps> = ({
     <div className="space-y-6">
       <div>
         <h3 className="text-lg font-semibold text-gray-900">Payment Options</h3>
-        <p className="text-sm text-gray-600">Cart total: ${total.toFixed(2)}</p>
+        <p className="text-sm text-gray-600">Cart total: {'\u20b1'+ total.toFixed(2)}</p>
       </div>
 
       <div className="flex flex-wrap gap-3">
@@ -97,13 +97,13 @@ const PaymentPlanBuilder: React.FC<PaymentPlanBuilderProps> = ({
             />
           </div>
           <div className="flex items-end">
-            <div className="text-sm text-gray-700">Remaining for schedule: <span className="font-medium">${remaining.toFixed(2)}</span></div>
+            <div className="text-sm text-gray-700">Remaining for schedule: <span className="font-medium">{ '\u20b1'+ remaining.toFixed(2)}</span></div>
           </div>
         </div>
       )}
 
       {saleType === 'pure_installment' && (
-        <div className="text-sm text-gray-700">Remaining for schedule: <span className="font-medium">${remaining.toFixed(2)}</span></div>
+        <div className="text-sm text-gray-700">Remaining for schedule: <span className="font-medium">{ '\u20b1'+ remaining.toFixed(2)}</span></div>
       )}
 
       {(saleType === 'installment_with_down' || saleType === 'pure_installment') && (
@@ -178,13 +178,13 @@ const PaymentPlanBuilder: React.FC<PaymentPlanBuilderProps> = ({
                     <tr key={idx} className="odd:bg-white even:bg-gray-50">
                       <td className="px-3 py-2 border-b">{idx + 1}</td>
                       <td className="px-3 py-2 border-b">{it.due_date}</td>
-                      <td className="px-3 py-2 border-b text-right">${it.amount.toFixed(2)}</td>
+                      <td className="px-3 py-2 border-b text-right">{'\u20b1' +it.amount.toFixed(2)}</td>
                     </tr>
                   ))}
                   <tr>
                     <td className="px-3 py-2 border-t font-semibold" colSpan={2}>Total</td>
                     <td className="px-3 py-2 border-t text-right font-semibold">
-                      ${schedule.reduce((s, it) => s + it.amount, 0).toFixed(2)}
+                      {'\u20b1' + schedule.reduce((s, it) => s + it.amount, 0).toFixed(2)}
                     </td>
                   </tr>
                 </tbody>

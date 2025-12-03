@@ -60,7 +60,7 @@ const PaymentsLogManager: React.FC = () => {
 
     // --- Helpers ---
     const formatCurrency = (val: number) =>
-        new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(val);
+        new Intl.NumberFormat('en-US', { style: 'currency', currency: 'PHP' }).format(val);
 
     const formatDate = (dateStr: string) =>
         new Date(dateStr).toLocaleString('en-US', {

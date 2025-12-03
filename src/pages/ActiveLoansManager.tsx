@@ -47,7 +47,7 @@ const ActiveLoansManager: React.FC = () => {
 
     // Helper: Currency Formatter
     const formatCurrency = (amount: number) =>
-        new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(amount);
+        new Intl.NumberFormat('en-US', { style: 'currency', currency: 'PHP' }).format(amount);
 
     return (
         <div className="w-full max-w-7xl mx-auto p-4 sm:p-6">

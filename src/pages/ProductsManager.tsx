@@ -160,7 +160,7 @@ const ProductManager: React.FC = () => {
                                     <div className="font-medium text-gray-900">{product.name}</div>
                                     <div className="text-sm text-gray-500">{product.sku}</div>
                                 </td>
-                                <td className="px-6 py-4 text-sm text-gray-700">${product.price.toFixed(2)}</td>
+                                <td className="px-6 py-4 text-sm text-gray-700">{'\u20b1'}{product.price.toFixed(2)}</td>
                                 <td className="px-6 py-4">
                                         <span className={`px-2 py-1 text-xs rounded-full ${
                                             product.stock_quantity > 0 ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'
@@ -195,7 +195,7 @@ const ProductManager: React.FC = () => {
                             <div key={product.id} className="p-4 border-b border-gray-100">
                                 <div className="flex justify-between mb-2">
                                     <span className="font-medium">{product.name}</span>
-                                    <span className="font-bold">${product.price}</span>
+                                    <span className="font-bold">{'\u20b1'+ product.price}</span>
                                 </div>
                                 <div className="flex justify-between items-center mt-2">
                                     <div className="space-x-2">

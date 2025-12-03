@@ -21,7 +21,7 @@ const CartSummary: React.FC<CartSummaryProps> = ({ cart, onChangeQty, onRemove }
             <div key={ci.product.id} className="flex items-center justify-between gap-3">
               <div className="min-w-0">
                 <div className="text-sm font-medium text-gray-900 truncate">{ci.product.name}</div>
-                <div className="text-xs text-gray-500">${ci.product.price.toFixed(2)}</div>
+                <div className="text-xs text-gray-500">{'\u20b1'}{ci.product.price.toFixed(2)}</div>
               </div>
               <div className="flex items-center gap-2">
                 <input
@@ -31,7 +31,7 @@ const CartSummary: React.FC<CartSummaryProps> = ({ cart, onChangeQty, onRemove }
                   value={ci.quantity}
                   onChange={(e) => onChangeQty(ci.product.id, parseInt(e.target.value || '1', 10))}
                 />
-                <div className="w-20 text-right text-sm font-medium">${(ci.product.price * ci.quantity).toFixed(2)}</div>
+                <div className="w-20 text-right text-sm font-medium">{'\u20b1'+(ci.product.price * ci.quantity).toFixed(2)}</div>
                 <button
                   className="px-2 py-1 text-xs rounded-md bg-red-50 text-red-700 hover:bg-red-100"
                   onClick={() => onRemove(ci.product.id)}
@@ -41,7 +41,7 @@ const CartSummary: React.FC<CartSummaryProps> = ({ cart, onChangeQty, onRemove }
           ))}
           <div className="border-t border-gray-200 pt-3 flex justify-between font-semibold">
             <span>Subtotal</span>
-            <span>${subtotal.toFixed(2)}</span>
+            <span>{'\u20b1' + subtotal.toFixed(2)}</span>
           </div>
         </div>
       )}

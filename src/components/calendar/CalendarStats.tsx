@@ -14,7 +14,7 @@ const CalendarStats: React.FC<CalendarStatsProps> = ({ items }) => {
     const dueTodayCount = items.filter(item => item.days_remaining === 0).length;
 
     const formatCurrency = (amount: number) =>
-        new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(amount);
+        new Intl.NumberFormat('en-US', { style: 'currency', currency: 'PHP' }).format(amount);
 
     return (
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">

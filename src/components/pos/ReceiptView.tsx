@@ -44,9 +44,9 @@ const ReceiptView: React.FC<ReceiptViewProps> = ({ orderId, status, customer, ca
             {saleType === 'pure_installment' && 'Pure Installment'}
           </span></div>
           {saleType === 'installment_with_down' && (
-            <div className="flex justify-between"><span>Down Payment</span><span className="font-medium">${(downPayment || 0).toFixed(2)}</span></div>
+            <div className="flex justify-between"><span>Down Payment</span><span className="font-medium">{'\u20b1'+(downPayment || 0).toFixed(2)}</span></div>
           )}
-          <div className="flex justify-between font-semibold mt-2"><span>Total</span><span>${total.toFixed(2)}</span></div>
+          <div className="flex justify-between font-semibold mt-2"><span>Total</span><span>{'\u20b1' + total.toFixed(2)}</span></div>
         </div>
       </div>
 
@@ -66,14 +66,14 @@ const ReceiptView: React.FC<ReceiptViewProps> = ({ orderId, status, customer, ca
               {cart.map((ci) => (
                 <tr key={ci.product.id} className="odd:bg-white even:bg-gray-50">
                   <td className="px-3 py-2 border-b">{ci.product.name}</td>
-                  <td className="px-3 py-2 border-b text-right">${ci.product.price.toFixed(2)}</td>
+                  <td className="px-3 py-2 border-b text-right">{'\u20b1' + ci.product.price.toFixed(2)}</td>
                   <td className="px-3 py-2 border-b text-right">{ci.quantity}</td>
-                  <td className="px-3 py-2 border-b text-right">${(ci.product.price * ci.quantity).toFixed(2)}</td>
+                  <td className="px-3 py-2 border-b text-right">{ '\u20b1' + (ci.product.price * ci.quantity).toFixed(2)}</td>
                 </tr>
               ))}
               <tr>
                 <td className="px-3 py-2 border-t font-semibold" colSpan={3}>Grand Total</td>
-                <td className="px-3 py-2 border-t text-right font-semibold">${total.toFixed(2)}</td>
+                <td className="px-3 py-2 border-t text-right font-semibold">{'\u20b1'+ total.toFixed(2)}</td>
               </tr>
             </tbody>
           </table>
@@ -97,13 +97,13 @@ const ReceiptView: React.FC<ReceiptViewProps> = ({ orderId, status, customer, ca
                   <tr key={idx} className="odd:bg-white even:bg-gray-50">
                     <td className="px-3 py-2 border-b">{idx + 1}</td>
                     <td className="px-3 py-2 border-b">{it.due_date}</td>
-                    <td className="px-3 py-2 border-b text-right">${it.amount.toFixed(2)}</td>
+                    <td className="px-3 py-2 border-b text-right">{'\u20b1' + it.amount.toFixed(2)}</td>
                   </tr>
                 ))}
                 <tr>
                   <td className="px-3 py-2 border-t font-semibold" colSpan={2}>Total</td>
                   <td className="px-3 py-2 border-t text-right font-semibold">
-                    ${schedule.reduce((s, it) => s + it.amount, 0).toFixed(2)}
+                    {'\u20b1' + schedule.reduce((s, it) => s + it.amount, 0).toFixed(2)}
                   </td>
                 </tr>
               </tbody>
