@@ -14,7 +14,7 @@ const LoanDetails: React.FC<LoanDetailsProps> = ({ loan }) => {
 
     // Format currency
     const formatCurrency = (amount: number) =>
-        new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(amount);
+        new Intl.NumberFormat('en-US', { style: 'currency', currency: 'PHP' }).format(amount);
 
     return (
         <div className="space-y-6">

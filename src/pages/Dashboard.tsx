@@ -6,7 +6,7 @@ import type { DashboardStats } from '../types/dashboard.ts'; // Adjust path as n
 const formatCurrency = (amount: number) => {
     return new Intl.NumberFormat('en-US', {
         style: 'currency',
-        currency: 'USD',
+        currency: 'PHP',
     }).format(amount);
 };
 

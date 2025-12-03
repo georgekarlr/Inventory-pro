@@ -75,8 +75,8 @@ const PaymentProcessor: React.FC<PaymentProcessorProps> = ({
       tendered: Math.round(tendered * 100) / 100,
       method,
       change,
-      deduct: saleType === 'full_payment' ? Math.round((deduct || 0) * 100) / 100 : undefined,
-      net_amount: saleType === 'full_payment' ? Math.round(netTotalForFull * 100) / 100 : undefined,
+      /*deduct: saleType === 'full_payment' ? Math.round((deduct || 0) * 100) / 100 : undefined,
+      net_amount: saleType === 'full_payment' ? Math.round(netTotalForFull * 100) / 100 : undefined,*/
     };
 
     const { data, error } = await SalesService.processSale({
@@ -114,7 +114,7 @@ const PaymentProcessor: React.FC<PaymentProcessorProps> = ({
           </div>
           <div className="flex items-center justify-between">
             <span className="text-sm text-gray-600">Cart Total</span>
-            <span className="text-sm font-semibold">${total.toFixed(2)}</span>
+            <span className="text-sm font-semibold">{'\u20b1'}{total.toFixed(2)}</span>
           </div>
           {saleType === 'full_payment' && (
             <div className="grid grid-cols-2 gap-4">
@@ -134,7 +134,7 @@ const PaymentProcessor: React.FC<PaymentProcessorProps> = ({
                 <input
                   type="text"
                   className="w-full px-3 py-2 border border-gray-200 rounded-md bg-gray-50"
-                  value={`$${netTotalForFull.toFixed(2)}`}
+                  value={`\u20B1${netTotalForFull.toFixed(2)}`}
                   readOnly
                 />
               </div>
@@ -142,7 +142,7 @@ const PaymentProcessor: React.FC<PaymentProcessorProps> = ({
           )}
           <div className="flex items-center justify-between">
             <span className="text-sm text-gray-600">Amount Due Now</span>
-            <span className="text-sm font-semibold">${amountNow.toFixed(2)}</span>
+            <span className="text-sm font-semibold">{'\u20B1'}{amountNow.toFixed(2)}</span>
           </div>
 
           <div>
@@ -175,7 +175,7 @@ const PaymentProcessor: React.FC<PaymentProcessorProps> = ({
               <input
                 type="text"
                 className="w-full px-3 py-2 border border-gray-200 rounded-md bg-gray-50"
-                value={`$${change.toFixed(2)}`}
+                value={`\u20b1${change.toFixed(2)}`}
                 readOnly
               />
             </div>
@@ -199,7 +199,7 @@ const PaymentProcessor: React.FC<PaymentProcessorProps> = ({
           <div className="flex justify-between"><span>Customer</span><span className="font-medium">{customer?.full_name ?? '-'}</span></div>
           <div className="flex justify-between"><span>Items</span><span className="font-medium">{cart.length}</span></div>
           {saleType === 'installment_with_down' && (
-            <div className="flex justify-between"><span>Down Payment</span><span className="font-medium">${(downPayment || 0).toFixed(2)}</span></div>
+            <div className="flex justify-between"><span>Down Payment</span><span className="font-medium">{'\u20b1'+ (downPayment || 0).toFixed(2)}</span></div>
           )}
           {(saleType === 'installment_with_down' || saleType === 'pure_installment') && (
             <div className="flex justify-between"><span>Installments</span><span className="font-medium">{schedule.length}</span></div>
@@ -207,7 +207,7 @@ const PaymentProcessor: React.FC<PaymentProcessorProps> = ({
         </div>
         <div className="mt-3 border-t pt-3 flex justify-between font-semibold">
           <span>Total</span>
-          <span>${total.toFixed(2)}</span>
+          <span>{'\u20b1'+ total.toFixed(2)}</span>
         </div>
       </div>
     </div>

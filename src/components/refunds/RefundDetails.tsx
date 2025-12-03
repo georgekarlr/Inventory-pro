@@ -10,7 +10,7 @@ interface RefundDetailsProps {
 const RefundDetails: React.FC<RefundDetailsProps> = ({ refund }) => {
 
     const formatCurrency = (amount: number) =>
-        new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(amount);
+        new Intl.NumberFormat('en-US', { style: 'currency', currency: 'PHP' }).format(amount);
 
     const formatDate = (dateStr: string) =>
         new Date(dateStr).toLocaleString('en-US', {

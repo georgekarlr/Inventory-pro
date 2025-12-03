@@ -11,7 +11,7 @@ const OverdueDetails: React.FC<OverdueDetailsProps> = ({ payment }) => {
 
     // Formatting helpers
     const formatCurrency = (amount: number) =>
-        new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD' }).format(amount);
+        new Intl.NumberFormat('en-US', { style: 'currency', currency: 'PHP' }).format(amount);
 
     // Dynamic urgency styles
     const isSevere = payment.days_overdue > 30;

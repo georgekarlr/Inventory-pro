@@ -70,8 +70,6 @@ const staffNavigation: NavItem[] = [
     name: 'Management',
     children: [
       { name: 'Customers', href: '/management/customers', icon: Users },
-      { name: 'Products', href: '/management/products', icon: Package },
-      { name: 'Plans', href: '/management/plans', icon: ClipboardList },
     ],
   },
   {
@@ -142,7 +140,7 @@ const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
           {/* Header */}
           <div className="flex items-center justify-between h-16 px-6 border-b border-gray-200">
             <div>
-              <h1 className="text-xl font-bold text-gray-900">Your App</h1>
+              <h1 className="text-xl font-bold text-gray-900">Installment App</h1>
               {persona && (
                 <p className="text-xs text-gray-500">
                   {persona.personName || (persona.type === 'admin' ? 'Admin' : (persona.loginName || 'Staff'))} Portal

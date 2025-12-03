@@ -12,14 +12,10 @@ import PersonaManagement from './pages/PersonaManagement'
 import CustomerPage from "./pages/CustomerPage.tsx";
 import {
     BarChart3,
-    FileText,
     Mail,
     Calendar,
     Settings,
-    TrendingUp,
-    ClipboardList,
-    Receipt,
-    RotateCcw
+    ClipboardList
 } from 'lucide-react'
 import ProductsManager from "./pages/ProductsManager.tsx";
 import POSWizard from './pages/POSWizard';
@@ -29,6 +25,7 @@ import OverdueManager from "./pages/OverdueManager.tsx";
 import OrderHistoryManager from "./pages/OrderHistoryManager.tsx";
 import PaymentsLogManager from "./pages/PaymentsLogManager.tsx";
 import RefundsLogManager from "./pages/RefundsLogManager.tsx";
+import SalesListManager from "./pages/SalesListManager.tsx";
 
 function App() {
     return (
@@ -74,20 +71,6 @@ function App() {
                         </ProtectedRoute>
                     } />
 
-                    <Route path="/documents" element={
-                        <ProtectedRoute>
-                            <PersonaProtectedRoute>
-                                <Layout>
-                                    <PlaceholderPage
-                                        title="Documents"
-                                        description="Manage and organize your documents and files."
-                                        icon={FileText}
-                                    />
-                                </Layout>
-                            </PersonaProtectedRoute>
-                        </ProtectedRoute>
-                    } />
-
                     {/* New navigation routes */}
                     <Route path="/pos" element={
                         <ProtectedRoute>
@@ -104,11 +87,7 @@ function App() {
                         <ProtectedRoute>
                             <PersonaProtectedRoute>
                                 <Layout>
-                                    <PlaceholderPage
-                                        title="Sales"
-                                        description="View and manage sales performance."
-                                        icon={TrendingUp}
-                                    />
+                                    <SalesListManager/>
                                 </Layout>
                             </PersonaProtectedRoute>
                         </ProtectedRoute>

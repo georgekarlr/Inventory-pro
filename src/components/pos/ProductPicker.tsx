@@ -62,7 +62,7 @@ const ProductPicker: React.FC<ProductPickerProps> = ({ onAdd }) => {
                 </div>
               </div>
               <div className="text-right">
-                <div className="text-sm font-semibold text-gray-900">${p.price.toFixed(2)}</div>
+                <div className="text-sm font-semibold text-gray-900">{'\u20b1'}{p.price.toFixed(2)}</div>
                 <button
                   className="mt-2 px-3 py-1.5 rounded-md bg-gray-900 text-white hover:bg-black text-sm"
                   onClick={() => onAdd(p)}
