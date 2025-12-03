@@ -9,7 +9,7 @@ import {
     Briefcase,
     LayoutList,
     Loader2,
-    XCircle
+    XCircle, CreditCard
 } from 'lucide-react';
 
 // --- Types ---
@@ -255,68 +255,83 @@ const SalesListManager: React.FC = () => {
                 <>
                     {/* Desktop Table View */}
                     <div className="hidden md:block bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
-                        <table className="min-w-full divide-y divide-gray-200">
-                            <thead className="bg-gray-50">
-                            <tr>
-                                <th className="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Date</th>
-                                <th className="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Customer</th>
-                                <th className="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Seller</th>
-                                <th className="px-6 py-4 text-right text-xs font-semibold text-gray-500 uppercase tracking-wider">Total</th>
-                                <th className="px-6 py-4 text-right text-xs font-semibold text-gray-500 uppercase tracking-wider">Balance</th>
-                                <th className="px-6 py-4 text-center text-xs font-semibold text-gray-500 uppercase tracking-wider">Status</th>
-                                <th className="px-6 py-4 text-right text-xs font-semibold text-gray-500 uppercase tracking-wider">Action</th>
-                            </tr>
-                            </thead>
-                            <tbody className="bg-white divide-y divide-gray-200">
-                            {sales.map((sale) => (
-                                <tr
-                                    key={sale.order_id}
-                                    onClick={() => handleRowClick(sale.order_id)}
-                                    className="hover:bg-blue-50 cursor-pointer transition-colors group"
-                                >
-                                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                        {new Date(sale.sale_date).toLocaleDateString()}
-                                    </td>
-                                    <td className="px-6 py-4 whitespace-nowrap">
-                                        <div className="flex flex-col">
-                                            <span className="text-sm font-semibold text-gray-900">{sale.customer_name}</span>
-                                            <span className="text-xs text-gray-400 group-hover:text-blue-500 transition-colors">#{sale.order_id}</span>
-                                        </div>
-                                    </td>
-                                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600">
-                                        {sale.seller}
-                                    </td>
-                                    <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 text-right">
-                                        {formatCurrency(sale.total_amount)}
-                                    </td>
-                                    <td className="px-6 py-4 whitespace-nowrap text-sm text-right">
-                                        {sale.remaining_balance > 0 ? (
-                                            <span className="text-orange-600 font-bold">{formatCurrency(sale.remaining_balance)}</span>
-                                        ) : (
-                                            <span className="text-green-600 font-medium">Paid</span>
-                                        )}
-                                    </td>
-                                    <td className="px-6 py-4 whitespace-nowrap text-center">
-                                            <span className={`px-3 py-1 inline-flex text-xs leading-5 font-semibold rounded-full border capitalize ${getStatusStyle(sale.status)}`}>
-                                                {sale.status.replace('_', ' ')}
-                                            </span>
-                                    </td>
-                                    <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                        <button className="text-gray-400 hover:text-blue-600 transition-colors">
-                                            <ChevronRight size={20} />
-                                        </button>
-                                    </td>
-                                </tr>
-                            ))}
-                            {sales.length === 0 && (
+
+                        {/* 1. Wrapper handles BOTH Vertical (y) and Horizontal (x) scrolling */}
+                        <div className="max-h-[70vh] overflow-auto custom-scrollbar">
+
+                            {/* 2. Added min-w-[1000px] to FORCE horizontal scroll on small screens */}
+                            <table className="min-w-[1000px] w-full divide-y divide-gray-200 relative">
+
+                                <thead className="bg-gray-50 sticky top-0 z-10 shadow-sm">
                                 <tr>
-                                    <td colSpan={7} className="px-6 py-12 text-center text-gray-500 bg-gray-50">
-                                        No sales found matching your filters.
-                                    </td>
+                                    {/* Note: Added whitespace-nowrap to headers to prevent wrapping */}
+                                    <th className="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider bg-gray-50 whitespace-nowrap">Date</th>
+                                    <th className="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider bg-gray-50 whitespace-nowrap">Customer</th>
+                                    <th className="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider bg-gray-50 whitespace-nowrap">Seller</th>
+                                    <th className="px-6 py-4 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider bg-gray-50 whitespace-nowrap">Type</th>
+                                    <th className="px-6 py-4 text-right text-xs font-semibold text-gray-500 uppercase tracking-wider bg-gray-50 whitespace-nowrap">Total</th>
+                                    <th className="px-6 py-4 text-right text-xs font-semibold text-gray-500 uppercase tracking-wider bg-gray-50 whitespace-nowrap">Balance</th>
+                                    <th className="px-6 py-4 text-center text-xs font-semibold text-gray-500 uppercase tracking-wider bg-gray-50 whitespace-nowrap">Status</th>
+                                    <th className="px-6 py-4 text-right text-xs font-semibold text-gray-500 uppercase tracking-wider bg-gray-50 whitespace-nowrap">Action</th>
                                 </tr>
-                            )}
-                            </tbody>
-                        </table>
+                                </thead>
+
+                                <tbody className="bg-white divide-y divide-gray-200">
+                                {sales.map((sale) => (
+                                    <tr
+                                        key={sale.order_id}
+                                        onClick={() => handleRowClick(sale.order_id)}
+                                        className="hover:bg-blue-50 cursor-pointer transition-colors group"
+                                    >
+                                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                            {new Date(sale.sale_date).toLocaleDateString()}
+                                        </td>
+                                        <td className="px-6 py-4 whitespace-nowrap">
+                                            <div className="flex flex-col">
+                                                <span className="text-sm font-semibold text-gray-900">{sale.customer_name}</span>
+                                                <span className="text-xs text-gray-400 group-hover:text-blue-500 transition-colors">#{sale.order_id}</span>
+                                            </div>
+                                        </td>
+                                        <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-600">
+                                            {sale.seller}
+                                        </td>
+                                        <td className="px-6 py-4 whitespace-nowrap">
+                                            <div className="text-sm text-gray-600 capitalize">
+                                                {sale.sale_type.replace(/_/g, ' ')}
+                                            </div>
+                                        </td>
+                                        <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900 text-right">
+                                            {formatCurrency(sale.total_amount)}
+                                        </td>
+                                        <td className="px-6 py-4 whitespace-nowrap text-sm text-right">
+                                            {sale.remaining_balance > 0 ? (
+                                                <span className="text-orange-600 font-bold">{formatCurrency(sale.remaining_balance)}</span>
+                                            ) : (
+                                                <span className="text-green-600 font-medium">Paid</span>
+                                            )}
+                                        </td>
+                                        <td className="px-6 py-4 whitespace-nowrap text-center">
+                            <span className={`px-3 py-1 inline-flex text-xs leading-5 font-semibold rounded-full border capitalize ${getStatusStyle(sale.status)}`}>
+                                {sale.status.replace('_', ' ')}
+                            </span>
+                                        </td>
+                                        <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                                            <button className="text-gray-400 hover:text-blue-600 transition-colors">
+                                                <ChevronRight size={20} />
+                                            </button>
+                                        </td>
+                                    </tr>
+                                ))}
+                                {sales.length === 0 && (
+                                    <tr>
+                                        <td colSpan={8} className="px-6 py-12 text-center text-gray-500 bg-gray-50">
+                                            No sales found matching your filters.
+                                        </td>
+                                    </tr>
+                                )}
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
 
                     {/* Mobile Card View */}
@@ -343,7 +358,12 @@ const SalesListManager: React.FC = () => {
                                         <Briefcase size={12} className="mr-1" />
                                         Seller: {sale.seller} &bull; Order #{sale.order_id}
                                     </div>
+                                    <div className="flex items-center text-xs text-gray-600 mt-2 bg-gray-50 inline-block px-2 py-1 rounded border border-gray-100">
+                                        <CreditCard size={12} className="inline mr-1 text-gray-400"/>
+                                        <span className="capitalize">{sale.sale_type.replace(/_/g, ' ')}</span>
+                                    </div>
                                 </div>
+
 
                                 <div className="flex justify-between items-end border-t border-gray-100 pt-3">
                                     <div>

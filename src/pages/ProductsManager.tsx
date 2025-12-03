@@ -197,6 +197,9 @@ const ProductManager: React.FC = () => {
                                     <span className="font-medium">{product.name}</span>
                                     <span className="font-bold">{'\u20b1'+ product.price}</span>
                                 </div>
+                                <div className="flex justify-between mb-2">
+                                    <span className="font-light">{product.stock_quantity}</span>
+                                </div>
                                 <div className="flex justify-between items-center mt-2">
                                     <div className="space-x-2">
                                         <button onClick={() => setStockProduct(product)} className="text-blue-600 p-1"><Package size={20}/></button>
