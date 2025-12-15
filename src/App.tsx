@@ -5,27 +5,13 @@ import PersonaProtectedRoute from './components/PersonaProtectedRoute'
 import Layout from './components/layout/Layout'
 import LoginForm from './components/auth/LoginForm'
 import SignupForm from './components/auth/SignupForm'
-import Dashboard from './pages/Dashboard'
-import Profile from './pages/Profile'
 import PlaceholderPage from './pages/PlaceholderPage'
 import PersonaManagement from './pages/PersonaManagement'
-import CustomerPage from "./pages/CustomerPage.tsx";
 import {
     BarChart3,
-    Mail,
-    Calendar,
     Settings,
-    ClipboardList
+    LayoutDashboardIcon, TrendingUpIcon, ShoppingCart, Users, House
 } from 'lucide-react'
-import ProductsManager from "./pages/ProductsManager.tsx";
-import POSWizard from './pages/POSWizard';
-import ActiveLoansManager from "./pages/ActiveLoansManager.tsx";
-import CollectionCalendar from "./pages/CollectionCalendar.tsx";
-import OverdueManager from "./pages/OverdueManager.tsx";
-import OrderHistoryManager from "./pages/OrderHistoryManager.tsx";
-import PaymentsLogManager from "./pages/PaymentsLogManager.tsx";
-import RefundsLogManager from "./pages/RefundsLogManager.tsx";
-import SalesListManager from "./pages/SalesListManager.tsx";
 
 function App() {
     return (
@@ -41,21 +27,72 @@ function App() {
                         <ProtectedRoute>
                             <PersonaProtectedRoute>
                                 <Layout>
-                                    <Dashboard />
+                                    <PlaceholderPage
+                                        title="Dashboard"
+                                        description="Dashboard"
+                                        icon={LayoutDashboardIcon}
+                                        />
                                 </Layout>
                             </PersonaProtectedRoute>
                         </ProtectedRoute>
                     } />
 
-                    <Route path="/profile" element={
+                    <Route path="/lease-wizard" element={
                         <ProtectedRoute>
                             <PersonaProtectedRoute>
                                 <Layout>
-                                    <Profile />
+                                    <PlaceholderPage
+                                        title="Lease Wizard"
+                                        description="Create leases"
+                                        icon={ShoppingCart}
+                                    />
                                 </Layout>
                             </PersonaProtectedRoute>
                         </ProtectedRoute>
                     } />
+                    <Route path="/leases" element={
+                        <ProtectedRoute>
+                            <PersonaProtectedRoute>
+                                <Layout>
+                                    <PlaceholderPage
+                                        title="Leases"
+                                        description="Leases"
+                                        icon={TrendingUpIcon}
+                                    />
+                                </Layout>
+                            </PersonaProtectedRoute>
+                        </ProtectedRoute>
+                    } />
+
+                    <Route path="/management/tenants" element={
+                        <ProtectedRoute>
+                            <PersonaProtectedRoute>
+                                <Layout>
+                                    <PlaceholderPage
+                                        title="Tenants"
+                                        description="Tenants"
+                                        icon={Users}
+                                    />
+                                </Layout>
+                            </PersonaProtectedRoute>
+                        </ProtectedRoute>
+                    } />
+
+                    <Route path="/management/properties" element={
+                        <ProtectedRoute>
+                            <PersonaProtectedRoute>
+                                <Layout>
+                                    <PlaceholderPage
+                                        title="Properties"
+                                        description="Properties"
+                                        icon={House}
+                                    />
+                                </Layout>
+                            </PersonaProtectedRoute>
+                        </ProtectedRoute>
+                    } />
+
+
 
                     <Route path="/analytics" element={
                         <ProtectedRoute>
@@ -63,169 +100,8 @@ function App() {
                                 <Layout>
                                     <PlaceholderPage
                                         title="Analytics"
-                                        description="View detailed analytics and insights about your data."
+                                        description="Analytics"
                                         icon={BarChart3}
-                                    />
-                                </Layout>
-                            </PersonaProtectedRoute>
-                        </ProtectedRoute>
-                    } />
-
-                    {/* New navigation routes */}
-                    <Route path="/pos" element={
-                        <ProtectedRoute>
-                            <PersonaProtectedRoute>
-                                <Layout>
-                                    {/* POS Wizard */}
-                                    <POSWizard />
-                                </Layout>
-                            </PersonaProtectedRoute>
-                        </ProtectedRoute>
-                    } />
-
-                    <Route path="/sales" element={
-                        <ProtectedRoute>
-                            <PersonaProtectedRoute>
-                                <Layout>
-                                    <SalesListManager/>
-                                </Layout>
-                            </PersonaProtectedRoute>
-                        </ProtectedRoute>
-                    } />
-
-                    {/* Management */}
-                    <Route path="/management/customers" element={
-                        <ProtectedRoute>
-                            <PersonaProtectedRoute>
-                                <Layout>
-                                    <CustomerPage/>
-                                </Layout>
-                            </PersonaProtectedRoute>
-                        </ProtectedRoute>
-                    } />
-
-                    <Route path="/management/products" element={
-                        <ProtectedRoute>
-                            <PersonaProtectedRoute>
-                                <Layout>
-                                    <ProductsManager/>
-                                </Layout>
-                            </PersonaProtectedRoute>
-                        </ProtectedRoute>
-                    } />
-
-                    <Route path="/management/plans" element={
-                        <ProtectedRoute>
-                            <PersonaProtectedRoute>
-                                <Layout>
-                                    <PlaceholderPage
-                                        title="Plans"
-                                        description="Configure and manage installment plans."
-                                        icon={ClipboardList}
-                                    />
-                                </Layout>
-                            </PersonaProtectedRoute>
-                        </ProtectedRoute>
-                    } />
-
-                    {/* Installments */}
-                    <Route path="/installments/active-loans" element={
-                        <ProtectedRoute>
-                            <PersonaProtectedRoute>
-                                <Layout>
-                                    <ActiveLoansManager/>
-                                </Layout>
-                            </PersonaProtectedRoute>
-                        </ProtectedRoute>
-                    } />
-
-                    <Route path="/installments/due-calendar" element={
-                        <ProtectedRoute>
-                            <PersonaProtectedRoute>
-                                <Layout>
-                                    <CollectionCalendar/>
-                                </Layout>
-                            </PersonaProtectedRoute>
-                        </ProtectedRoute>
-                    } />
-
-                    <Route path="/installments/overdue" element={
-                        <ProtectedRoute>
-                            <PersonaProtectedRoute>
-                                <Layout>
-                                    <OverdueManager/>
-                                </Layout>
-                            </PersonaProtectedRoute>
-                        </ProtectedRoute>
-                    } />
-
-                    {/* Finance */}
-                    <Route path="/finance/order-history" element={
-                        <ProtectedRoute>
-                            <PersonaProtectedRoute>
-                                <Layout>
-                                    <OrderHistoryManager/>
-                                </Layout>
-                            </PersonaProtectedRoute>
-                        </ProtectedRoute>
-                    } />
-
-                    <Route path="/finance/payments-log" element={
-                        <ProtectedRoute>
-                            <PersonaProtectedRoute>
-                                <Layout>
-                                    <PaymentsLogManager/>
-                                </Layout>
-                            </PersonaProtectedRoute>
-                        </ProtectedRoute>
-                    } />
-
-                    <Route path="/finance/refunds" element={
-                        <ProtectedRoute>
-                            <PersonaProtectedRoute>
-                                <Layout>
-                                    <RefundsLogManager/>
-                                </Layout>
-                            </PersonaProtectedRoute>
-                        </ProtectedRoute>
-                    } />
-
-                    <Route path="/messages" element={
-                        <ProtectedRoute>
-                            <PersonaProtectedRoute>
-                                <Layout>
-                                    <PlaceholderPage
-                                        title="Messages"
-                                        description="Send and receive messages with your team."
-                                        icon={Mail}
-                                    />
-                                </Layout>
-                            </PersonaProtectedRoute>
-                        </ProtectedRoute>
-                    } />
-
-                    <Route path="/calendar" element={
-                        <ProtectedRoute>
-                            <PersonaProtectedRoute>
-                                <Layout>
-                                    <PlaceholderPage
-                                        title="Calendar"
-                                        description="Schedule and manage your events and appointments."
-                                        icon={Calendar}
-                                    />
-                                </Layout>
-                            </PersonaProtectedRoute>
-                        </ProtectedRoute>
-                    } />
-
-                    <Route path="/settings" element={
-                        <ProtectedRoute>
-                            <PersonaProtectedRoute>
-                                <Layout>
-                                    <PlaceholderPage
-                                        title="Settings"
-                                        description="Configure your application settings and preferences."
-                                        icon={Settings}
                                     />
                                 </Layout>
                             </PersonaProtectedRoute>

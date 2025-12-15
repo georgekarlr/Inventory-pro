@@ -13,9 +13,9 @@ export default defineConfig({
                 enabled: true,
             },
             manifest: {
-                name: 'Installment Application',
-                short_name: 'Installment App',
-                description: 'Manage your installment payments with ease.',
+                name: 'Rent Manager Application',
+                short_name: 'Rent Manager App',
+                description: 'Manage your tenants with ease.',
                 start_url: '/',
                 scope: '/',
                 display: 'standalone',

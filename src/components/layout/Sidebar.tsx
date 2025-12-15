@@ -8,15 +8,7 @@ import {
   ChevronDown,
   ShoppingCart,
   TrendingUp,
-  Users,
-  Package,
-  ClipboardList,
-  CheckCircle2,
-  CalendarClock,
-  AlertTriangle,
-  History,
-  Receipt,
-  RotateCcw
+  Users, House, BarChart3,
 } from 'lucide-react'
 
 interface SidebarProps {
@@ -33,62 +25,31 @@ type NavItem = {
 
 const adminNavigation: NavItem[] = [
   { name: 'Dashboard', href: '/dashboard', icon: LayoutDashboard },
-  { name: 'POS', href: '/pos', icon: ShoppingCart },
-  { name: 'Sales', href: '/sales', icon: TrendingUp },
+  { name: 'LeaseWizard', href: '/lease-wizard', icon: ShoppingCart },
+  { name: 'Leases', href: '/leases', icon: TrendingUp },
   {
     name: 'Management',
     children: [
-      { name: 'Customers', href: '/management/customers', icon: Users },
-      { name: 'Products', href: '/management/products', icon: Package },
-      { name: 'Plans', href: '/management/plans', icon: ClipboardList },
+      { name: 'Tenants', href: '/management/tenants', icon: Users },
+      { name: 'Properties', href: '/management/properties', icon: House },
     ],
   },
-  {
-    name: 'Installments',
-    children: [
-      { name: 'Active Loans', href: '/installments/active-loans', icon: CheckCircle2 },
-      { name: 'Due Calendar', href: '/installments/due-calendar', icon: CalendarClock },
-      { name: 'Overdue', href: '/installments/overdue', icon: AlertTriangle },
-    ],
-  },
-  {
-    name: 'Finance',
-    children: [
-      { name: 'Order History', href: '/finance/order-history', icon: History },
-      { name: 'Payments Log', href: '/finance/payments-log', icon: Receipt },
-      { name: 'Refunds', href: '/finance/refunds', icon: RotateCcw },
-    ],
-  },
+  { name: 'Analytics', href: '/analytics', icon: BarChart3 },
   { name: 'Persona Management', href: '/persona-management', icon: Shield },
 ]
 
 const staffNavigation: NavItem[] = [
   { name: 'Dashboard', href: '/dashboard', icon: LayoutDashboard },
-  { name: 'POS', href: '/pos', icon: ShoppingCart },
-  { name: 'Sales', href: '/sales', icon: TrendingUp },
+  { name: 'LeaseWizard', href: '/lease-wizard', icon: ShoppingCart },
+  { name: 'Leases', href: '/leases', icon: TrendingUp },
   {
     name: 'Management',
     children: [
-      { name: 'Customers', href: '/management/customers', icon: Users },
+      { name: 'Tenants', href: '/management/tenants', icon: Users },
+      { name: 'Properties', href: '/management/properties', icon: House },
     ],
   },
-  {
-    name: 'Installments',
-    children: [
-      { name: 'Active Loans', href: '/installments/active-loans', icon: CheckCircle2 },
-      { name: 'Due Calendar', href: '/installments/due-calendar', icon: CalendarClock },
-      { name: 'Overdue', href: '/installments/overdue', icon: AlertTriangle },
-    ],
-  },
-  {
-    name: 'Finance',
-    children: [
-      { name: 'Order History', href: '/finance/order-history', icon: History },
-      { name: 'Payments Log', href: '/finance/payments-log', icon: Receipt },
-      { name: 'Refunds', href: '/finance/refunds', icon: RotateCcw },
-    ],
-  },
-  { name: 'Persona Management', href: '/persona-management', icon: Shield },
+  { name: 'Analytics', href: '/analytics', icon: BarChart3 },
 ]
 
 const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
