@@ -6,9 +6,7 @@ import {
   X,
   Shield,
   ChevronDown,
-  ShoppingCart,
-  TrendingUp,
-  Users, House, BarChart3,
+  Users, BarChart3, LocationEdit, Boxes, Package, Shapes, MapPin, Activity,
 } from 'lucide-react'
 
 interface SidebarProps {
@@ -25,33 +23,50 @@ type NavItem = {
 
 const adminNavigation: NavItem[] = [
   { name: 'Dashboard', href: '/dashboard', icon: LayoutDashboard },
-  { name: 'LeaseWizard', href: '/lease-wizard', icon: ShoppingCart },
-  { name: 'Leases', href: '/leases', icon: TrendingUp },
+  {
+    name: 'Inventory',
+    children: [
+      { name: 'Stock On Hand', href: '/inventory/stock', icon: Boxes },
+      { name: 'Stock By Location', href: '/inventory/stock-by-location', icon: MapPin },
+    ],
+  },
   {
     name: 'Management',
     children: [
-      { name: 'Tenants', href: '/management/tenants', icon: Users },
-      { name: 'Properties', href: '/management/properties', icon: House },
+      { name: 'Categories', href: '/management/categories', icon: Shapes },
+      { name: 'Products', href: '/management/products', icon: Package },
+      { name: 'Locations', href: '/management/locations', icon: LocationEdit },
+      { name: 'Suppliers', href: '/management/suppliers', icon: Users },
+
     ],
   },
+  { name: 'Transactions', href: '/transactions', icon: Activity },
   { name: 'Analytics', href: '/analytics', icon: BarChart3 },
   { name: 'Persona Management', href: '/persona-management', icon: Shield },
 ]
 
 const staffNavigation: NavItem[] = [
   { name: 'Dashboard', href: '/dashboard', icon: LayoutDashboard },
-  { name: 'LeaseWizard', href: '/lease-wizard', icon: ShoppingCart },
-  { name: 'Leases', href: '/leases', icon: TrendingUp },
+  {
+    name: 'Inventory',
+    children: [
+      { name: 'Stock On Hand', href: '/inventory/stock', icon: Boxes },
+      { name: 'Stock By Location', href: '/inventory/stock-by-location', icon: MapPin },
+    ],
+  },
   {
     name: 'Management',
     children: [
-      { name: 'Tenants', href: '/management/tenants', icon: Users },
-      { name: 'Properties', href: '/management/properties', icon: House },
+      { name: 'Categories', href: '/management/categories', icon: Shapes },
+      { name: 'Products', href: '/management/products', icon: Package },
+      { name: 'Locations', href: '/management/locations', icon: LocationEdit },
+      { name: 'Suppliers', href: '/management/suppliers', icon: Users },
+
     ],
   },
+  { name: 'Transactions', href: '/transactions', icon: Activity },
   { name: 'Analytics', href: '/analytics', icon: BarChart3 },
 ]
-
 const Sidebar: React.FC<SidebarProps> = ({ isOpen, onClose }) => {
   const location = useLocation()
   const { persona } = useAuth()

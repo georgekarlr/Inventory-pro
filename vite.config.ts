@@ -13,9 +13,9 @@ export default defineConfig({
                 enabled: true,
             },
             manifest: {
-                name: 'Rent Manager Application',
-                short_name: 'Rent Manager App',
-                description: 'Manage your tenants with ease.',
+                name: 'Inventory Pro',
+                short_name: 'Inventory Pro',
+                description: 'Manage your inventory with ease.',
                 start_url: '/',
                 scope: '/',
                 display: 'standalone',
